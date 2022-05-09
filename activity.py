@@ -17,5 +17,17 @@ all_day_excursion = [
 
 
 class ActivitiesFactory():
-  def __init__(self, activity_class: Activity) -> None:
-      pass
+  def build(config, activity_class=Activity) -> None:
+    activities = []
+    for activity in config:
+      new_activity = activity_class(
+        name=activity[0],
+        hours=activity[1],
+        price=activity[2],
+        description=activity[3]
+      )
+      activities.append(new_activity)
+    
+    return activities
+
+    
